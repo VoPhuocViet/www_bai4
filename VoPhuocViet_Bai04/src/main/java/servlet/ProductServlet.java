@@ -24,6 +24,7 @@ public class ProductServlet extends HttpServlet {
         productDAO = new ProductDAO(dataSource);
     }
 
+    // ... phần trên giữ nguyên ...
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
             ServletException, IOException {
@@ -36,15 +37,16 @@ public class ProductServlet extends HttpServlet {
                 req.setAttribute("product", product);
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/chitietsach.jsp");
                 dispatcher.forward(req, resp);
-                return; // Thêm return statement để tránh forward 2 lần
+                return;
             } else {
                 resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found");
                 return;
             }
         }
+        // Sửa forward sang product-list.jsp
         List<Product> products = productDAO.getAllProducts();
         req.setAttribute("products", products);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/chitietsach.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/product-list.jsp");
         dispatcher.forward(req, resp);
 
     }
