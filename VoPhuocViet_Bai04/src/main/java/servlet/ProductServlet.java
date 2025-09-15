@@ -16,7 +16,7 @@ import java.util.List;
 @WebServlet({"/products", "/product"})
 public class ProductServlet extends HttpServlet {
     private ProductDAO productDAO;
-    @Resource(name = "jdbc/shopdb")
+    @Resource(name = "jdbc/bookdb")
     private DataSource dataSource;
 
     @Override
@@ -34,7 +34,7 @@ public class ProductServlet extends HttpServlet {
             Product product = productDAO.getProductById(id);
             if (product != null) {
                 req.setAttribute("product", product);
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/product-detail.jsp");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/chitietsach.jsp");
                 dispatcher.forward(req, resp);
                 return; // Thêm return statement để tránh forward 2 lần
             } else {
@@ -44,7 +44,7 @@ public class ProductServlet extends HttpServlet {
         }
         List<Product> products = productDAO.getAllProducts();
         req.setAttribute("products", products);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/product-list.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/chitietsach.jsp");
         dispatcher.forward(req, resp);
 
     }

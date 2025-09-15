@@ -2,11 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>IUH BOOKSTORE - Product List</title>
+    <title>IUH BOOKSTORE - Product Details</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f5f5f5;
+            margin: 0;
+            padding: 0;
         }
         .header {
             background: url('${pageContext.request.contextPath}/images/header-bg.jpg') repeat-x;
@@ -41,7 +43,7 @@
             background: #fff;
             border: 1px solid #d1cfc3;
             box-shadow: 0 2px 8px #e8e8e8;
-            min-height: 700px;
+            min-height: 500px;
         }
         .sidebar {
             width: 260px;
@@ -69,59 +71,35 @@
             border: 1px solid #bbb;
             border-radius: 3px;
         }
-        .products-section {
+        .product-detail-section {
             flex: 1;
-            padding: 28px 12px;
+            padding: 30px 30px;
         }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px 18px;
-            justify-items: center;
-        }
-        .product-card {
-            background: #fff;
-            border: 1px solid #bbb;
-            padding: 12px 8px 14px 8px;
-            width: 220px;
-            box-shadow: 0 1px 4px #ececec;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .product-title {
-            font-size: 16px;
+        .product-detail-title {
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 3px;
+            margin-bottom: 18px;
         }
-        .product-img {
-            width: 120px;
-            height: 160px;
+        .product-detail-box {
+            display: flex;
+            align-items: flex-start;
+        }
+        .product-detail-img {
+            width: 180px;
+            height: 240px;
             object-fit: cover;
-            margin-bottom: 8px;
-            border: 1px solid #eee;
+            border: 1px solid #ccc;
+            margin-right: 30px;
         }
-        .product-info {
-            margin-bottom: 5px;
-            font-size: 14px;
+        .product-detail-info {
+            font-size: 16px;
         }
-        .product-details-link {
-            display: block;
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
             color: #2196F3;
-            margin-bottom: 5px;
             text-decoration: underline;
-            font-size: 14px;
-        }
-        .add-to-cart-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 14px;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .add-to-cart-btn:hover {
-            background-color: #45a049;
+            font-size: 15px;
         }
     </style>
 </head>
@@ -147,27 +125,20 @@
             <input type="text" placeholder="Search..." />
         </div>
     </div>
-    <!-- Products Grid -->
-    <div class="products-section">
-        <div class="products-grid">
-            <c:forEach items="${products}" var="p">
-                <div class="product-card">
-                    <div class="product-title">${p.title}</div>
-                    <img src="${pageContext.request.contextPath}/images/${p.imgURL}" class="product-img" alt="${p.title}">
-                    <div class="product-info">Price: ${p.price} đ</div>
-                    <div class="product-info">Quantity: ${p.quantity}</div>
-                    <a href="${pageContext.request.contextPath}/product?id=${p.id}" class="product-details-link">
-                        Product details
-                    </a>
-                    <form action="${pageContext.request.contextPath}/cart" method="post">
-                        <input type="hidden" name="id" value="${p.id}">
-                        <input type="hidden" name="action" value="add">
-                        <input type="hidden" name="quantity" value="1">
-                        <input type="submit" name="addToCart" value="Add to cart" class="add-to-cart-btn">
-                    </form>
-                </div>
-            </c:forEach>
+    <!-- Product Detail -->
+    <div class="product-detail-section">
+        <div class="product-detail-title">
+            Product details: ${product.title}
         </div>
+        <div class="product-detail-box">
+            <img src="${pageContext.request.contextPath}/images/${product.imgURL}"
+                 class="product-detail-img" alt="${product.title}">
+            <div class="product-detail-info">
+                <div>Price (VND): ${product.price}</div>
+                <div>Quantity: ${product.quantity}</div>
+            </div>
+        </div>
+        <a href="${pageContext.request.contextPath}/products" class="back-link">Back to Product List</a>
     </div>
 </div>
 </body>
