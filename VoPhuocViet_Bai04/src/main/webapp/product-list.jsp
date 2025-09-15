@@ -142,10 +142,10 @@
             About us information will be here...
             <a href="#" style="font-size: 13px; color: #666;">Read More &raquo;</a>
         </div>
-        <div class="sidebar-search">
-            <label>SEARCH SITE</label>
-            <input type="text" placeholder="Search..." />
-        </div>
+        <form action="${pageContext.request.contextPath}/search" method="get" style="margin-top:10px;">
+            <input type="text" name="q" placeholder="Search..." style="width:95%;padding:6px;" />
+            <input type="submit" value="Search" style="display:none;" />
+        </form>
     </div>
     <!-- Products Grid -->
     <div class="products-section">

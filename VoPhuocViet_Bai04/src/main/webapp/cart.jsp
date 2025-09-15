@@ -201,7 +201,7 @@
                 </form>
                 <div class="cart-actions">
                     <!-- Nút Checkout: sang trang thanh toán -->
-                    <a href="${pageContext.request.contextPath}/thanhtoan" class="checkout-btn">Checkout</a>
+                    <a href="${pageContext.request.contextPath}/thanhtoan.jsp" class="checkout-btn">Checkout</a>
                     <!-- Nút Clear: xóa giỏ hàng -->
                     <form action="${pageContext.request.contextPath}/cart" method="post" style="display:inline;">
                         <input type="hidden" name="action" value="clear"/>
