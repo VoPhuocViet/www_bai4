@@ -1,0 +1,7 @@
+[
+  {"empId":"E001","empName":"Nguyễn Văn A","email":"a@example.com","age":30,"status":1,"salary":1200.0,"deptId":"D001"},
+  {"empId":"E002","empName":"Trần Thị B","email":"b@example.com","age":28,"status":1,"salary":1500.0,"deptId":"D002"},
+  {"empId":"E003","empName":"Lê Văn C","email":"c@example.com","age":25,"status":0,"salary":1100.0,"deptId":"D003"},
+  {"empId":"E004","empName":"Phạm Thị D","email":"d@example.com","age":32,"status":1,"salary":2000.0,"deptId":"D002"},
+  {"empId":"E005","empName":"Hoàng Văn E","email":"e@example.com","age":40,"status":0,"salary":2200.0,"deptId":"D001"}
+]
